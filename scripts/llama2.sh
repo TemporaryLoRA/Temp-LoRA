@@ -19,7 +19,7 @@ accelerate launch --config_file $ACCELERATE_CONFIG trainer/acc_pg19_trainer.py -
   --output_dir $SAVE_DIR \
   --training_input_length 3072 \
   --stride_size 1024 \
-  --eval_input_length 3072 \
+  --eval_input_length 31744 \
   --num_train_epochs 2 \
   --gradient_checkpointing "false" \
   --use_flash_attention_2
