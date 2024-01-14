@@ -6,7 +6,7 @@ Our proposed method, Temp-Lora, offers an alternative idea. Rather than relying 
 
 Extensive experiments conducted on the PG19 language-modeling benchmark and the GuoFeng discourse-level translation benchmark demonstrate the efficacy of Temp-Lora. Our findings reveal that: 1) Temp-Lora significantly improves generation quality on long texts, evidenced by a 1.68 perplexity decrease and a 6.6 BLEU increase on GuoFeng, 2) TempLora is compatible and complementary to most existing long-text generation methods, and 3) Temp-Lora can significantly reduce computation cost
 
-# 代码运行
+# Running
 
 1. Write the path to the `configs/deepspeed_zero2. json` file to the `deepspeed_config_file` field of `accelerate_default_config.yaml` as follows:
 ``` 

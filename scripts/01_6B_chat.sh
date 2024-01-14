@@ -18,6 +18,6 @@ accelerate launch --config_file $ACCELERATE_CONFIG trainer/acc_guo_feng_trainer.
   --warmup_steps 2 \
   --output_dir $SAVE_DIR \
   --num_train_epochs 2 \
-  --gradient_checkpointing false \
+  --gradient_checkpointing "false" \
   --training_input_length 1 \
   --eval_input_length 1
