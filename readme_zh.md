@@ -99,6 +99,14 @@ python3 eval_results/pg19.py --help
 python3 eval_results/guo_feng.py --help
 ```
 
-## KV Cache Reuse
+## Example and KV Cache Reuse
 
-使用KV Cache Reuse可以减少训练时间，示例见`trainer/acc_complete_example_trainer.py`。
+我们实现了一个
+
+```
+- 基于输入生成1个chunk
+- 训练该chunk
+- 继续生成
+```
+
+的示例，并实现了 KV Cache Reuse，该示例见`trainer/acc_complete_example_trainer.py`。

@@ -98,6 +98,6 @@ python3 eval_results/pg19.py --help
 python3 eval_results/guo_feng.py --help
 ```
 
-## KV Cache Reuse
+## Example and KV Cache Reuse
 
-Using KV Cache Reuse can reduce training time, the example is in `trainer/acc_complete_example_trainer.py`.
+We provide a complete example of `generate chunk base inputs -> train chunk -> generate ...` and implement KV Cache Reuse. Using KV Cache Reuse can reduce training time, the example is in `trainer/acc_complete_example_trainer.py`.
