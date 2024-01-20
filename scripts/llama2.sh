@@ -1,5 +1,4 @@
 ACCELERATE_CONFIG=""
-DS_CONFIG=""
 SAVE_DIR=""
 
 MODEL_NAME="togethercomputer/LLaMA-2-7B-32K"
@@ -21,5 +20,4 @@ accelerate launch --config_file $ACCELERATE_CONFIG trainer/acc_pg19_trainer.py -
   --stride_size 1024 \
   --eval_input_length 31744 \
   --num_train_epochs 2 \
-  --gradient_checkpointing "false" \
-  --use_flash_attention_2
+  --gradient_checkpointing "false" 

@@ -25,7 +25,7 @@ num_processes: 1
 use_cpu: false
 ```
 
-1. Complete the shell file corresponding to the training task
+2. Complete the shell file corresponding to the training task
 
 To experiment on the `PG-19` dataset, you need to complete the 'scripts/llama2.sh' file, for example:
 
@@ -98,3 +98,6 @@ python3 eval_results/pg19.py --help
 python3 eval_results/guo_feng.py --help
 ```
 
+## KV Cache Reuse
+
+Using KV Cache Reuse can reduce training time, the example is in `trainer/acc_complete_example_trainer.py`.

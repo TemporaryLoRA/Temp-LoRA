@@ -54,6 +54,16 @@ class PG19SlowRawDataset:
             if i + self.stride_size >= input_length:
                 break
 
+class PG19SimpleDataset(Dataset):
+    def __init__(self, dataset: List[Dict[str, torch.Tensor]]):
+        self.dataset = dataset
+    
+    def __len__(self) -> int:
+        return len(self.dataset)
+
+    def __getitem__(self, idx: int) -> Dict[str, torch.Tensor]:
+        return self.dataset[idx]
+
 class PG19Dataset(Dataset):
     def __init__(self, dataset: PG19SlowRawDataset):
         self.dataset = dataset

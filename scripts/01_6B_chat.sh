@@ -1,5 +1,4 @@
 ACCELERATE_CONFIG=""
-DS_CONFlG=""
 SAVE_DIR=""
 
 mkdir -p $SAVE_DIR
