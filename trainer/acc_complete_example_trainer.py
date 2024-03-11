@@ -50,13 +50,17 @@ def generate_once(
     past_length = past_key_values[0][0].size(2) if past_key_values is not None else 0
     unwrap_model: LoraModel = accelerator.unwrap_model(model=model)
     unwrap_model.merge_adapter()
+    unwrap_model.eval()
+
+    input_ids = prev_input_ids[:, -(past_length + eval_input_length):]
+    input_length = input_ids.size(-1)
     outputs: GenerateOutput = unwrap_model.generate(
-        inputs=prev_input_ids[:, -(past_length + eval_input_length):],
+        inputs=input_ids,
         generation_config=generation_config,
         past_key_values=past_key_values
     )
     unwrap_model.unmerge_adapter()
-    generated = outputs.sequences[:, past_length + eval_input_length:]
+    generated = outputs.sequences[:, input_length:]
     assert generated.size(-1) == generate_length
 
     prev_input_ids = torch.cat(tensors=[prev_input_ids, generated], dim=-1)
@@ -65,7 +69,9 @@ def generate_once(
     return {
         "input_ids": batch_input_ids,
         "labels": torch.cat(tensors=[
-            torch.zeros(size=[1, training_input_length], dtype=torch.int64, device=generated.device),
+            torch.zeros(
+                size=[1, training_input_length], dtype=torch.int64, device=generated.device
+            ) - 100,
             generated
         ], dim=-1),
         "attention_mask": torch.ones_like(basic_input_ids),
@@ -157,7 +163,7 @@ if __name__ == "__main__":
     model = get_peft_model(model=model, peft_config=lora_config)
     model.print_trainable_parameters()
 
-    fp = "data/pg_19_test/860.txt"
+    fp = "data/pg19/1684.txt"
     with open(fp, "r", encoding="utf-8") as f:
         text = "".join(f.readlines()).strip()
     
@@ -202,6 +208,7 @@ if __name__ == "__main__":
             past_key_values = None
         if past_key_values is not None:
             reuse_times += 1
+
         batch, basic_input_ids, past_key_values = generate_once(
             generate_length=args.stride_size, 
             training_input_length=args.training_input_length,
