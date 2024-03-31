@@ -1,0 +1,18 @@
+# use docker: nvidia/cuda:11.8.0-devel-ubuntu22.04
+# python==3.10.12
+torch==2.2.1+cu118
+torchaudio==2.2.1+cu118
+torchvision==0.17.1+cu118
+transformers==4.38.2
+transformers-stream-generator==0.0.4
+flash-attn==2.5.6
+xformers==0.0.24+cu118
+peft==0.9.0
+accelerate==0.27.2
+deepspeed==0.13.4
+deepspeed-kernels==0.0.1.dev1698255861
+datasets==2.18.0
+evaluate==0.4.1
+joblib==1.3.2
+pynvml==11.5.0
+tqdm==4.66.2

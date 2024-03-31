@@ -101,3 +101,25 @@ python3 eval_results/guo_feng.py --help
 ## Example and KV Cache Reuse
 
 We provide a complete example of `generate chunk base inputs -> train chunk -> generate ...` and implement KV Cache Reuse. Using KV Cache Reuse can reduce training time, the example is in `trainer/acc_complete_example_trainer.py`.
+
+
+## Environment 
+
+We build the running environment based on [nvidia/cuda:11.8.0-devel-ubuntu22.04](https://hub.docker.com/layers/nvidia/cuda/11.8.0-cudnn8-devel-ubuntu22.04/images/sha256-3fbac875b9fd3059d554226246c1ade676fad88aee1ac2cb2deaa6e77e4606a5). The required python packages are detailed in the `requirements.txt` file. Several important packages are as follows:
+
+```bash
+use docker: nvidia/cuda:11.8.0-devel-ubuntu22.04
+python version: 3.10.12
+torch 2.2.1+cu118
+torchaudio  2.2.1+cu118
+torchvision 0.17.1+cu118
+transformers 4.38.2
+transformers-stream-generator 0.0.4
+flash-attn 2.5.6
+xformers 0.0.24+cu118
+peft 0.9.0
+accelerate 0.27.2
+deepspeed 0.13.4
+deepspeed-kernels 0.0.1.dev1698255861
+datasets 2.18.0
+```

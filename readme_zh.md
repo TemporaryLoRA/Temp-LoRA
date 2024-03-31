@@ -110,3 +110,24 @@ python3 eval_results/guo_feng.py --help
 ```
 
 的示例，并实现了 KV Cache Reuse，该示例见`trainer/acc_complete_example_trainer.py`。
+
+## 运行环境
+
+我们基于[nvidia/cuda:11.8.0-devel-ubuntu22.04](https://hub.docker.com/layers/nvidia/cuda/11.8.0-cudnn8-devel-ubuntu22.04/images/sha256-3fbac875b9fd3059d554226246c1ade676fad88aee1ac2cb2deaa6e77e4606a5)构建运行环境，所需的python库详见`requirements.txt`文件，几个比较重要的库如下所示：
+
+```bash
+use docker: nvidia/cuda:11.8.0-devel-ubuntu22.04
+python version: 3.10.12
+torch 2.2.1+cu118
+torchaudio  2.2.1+cu118
+torchvision 0.17.1+cu118
+transformers 4.38.2
+transformers-stream-generator 0.0.4
+flash-attn 2.5.6
+xformers 0.0.24+cu118
+peft 0.9.0
+accelerate 0.27.2
+deepspeed 0.13.4
+deepspeed-kernels 0.0.1.dev1698255861
+datasets 2.18.0
+```
